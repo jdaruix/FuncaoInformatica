@@ -1,0 +1,63 @@
+﻿<div class="modal fade" id="beneficiariosModalCenter" tabindex="-1" role="dialog" aria-labelledby="beneficiariosModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Beneficiários</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formBeneficiario" method="post">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="CPFBeneficiario">CPF:</label>
+                                <input id="CPFBeneficiario" name="CPFBeneficiario" type="text" class="form-control" size="12" maxlength="14" OnKeyPress="formatarCpf(this)" placeholder="Ex.: 999.999.999-99" />
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <label for="NomeBeneficiario">Nome:</label>
+                                <input required="required" type="text" class="form-control" id="NomeBeneficiario" name="NomeBeneficiario" placeholder="Ex.: João da Silva" maxlength="50">
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label></label>
+                                <button type="submit" class="form-control btn btn-sm btn-success" style="margin-top: 4px">Salvar</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-md-12">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>CPF</th>
+                                    <th>Nome</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{
+    <script>
+        var urlPost = '@Url.Action("Alterar", "Cliente", new { area = "" })';
+        var obj = @Html.Raw(Json.Encode(Model));
+        var urlRetorno = '@Url.Action("Index", "Cliente", new { area = "" })';
+    </script>
+    @Scripts.Render("~/bundles/cliente-validator")
+    @Scripts.Render("~/bundles/altClientes")
+}
