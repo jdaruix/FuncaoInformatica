@@ -5,6 +5,13 @@
             CPF: { required: true, verificaCPF: true }
         }
     });
+
+    $("#formBeneficiario").validate({
+        rules:
+        {
+            CPFBeneficiario: { required: true, verificaCPF: true }
+        }
+    });
 }
 
 jQuery.validator.addMethod("verificaCPF", function (value, element) {
