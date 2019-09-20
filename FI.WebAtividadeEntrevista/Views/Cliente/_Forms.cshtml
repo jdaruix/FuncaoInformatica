@@ -109,12 +109,28 @@
     }
 
     function modalBeneficiosAbrir() {
+
         $('#beneficiariosModalCenter').modal();
+        let tbody: string;
+
+        obj.Beneficiaros.map(items, function (item) {
+            tbody = `
+            <tr
+                <td>${item.CPF}</td>
+                <td>${item.Nome}</td>
+                <td><button type="submit" class="btn btn-sm btn-success" onclick="Alterar(${item.Id})">Alterar</button></td>
+                <td><button type="submit" class="btn btn-sm btn-success" onclick="Excluir(${item.Id})">Excluir</button></td>
+            </tr>`;
+        });
+
+        $('#table tbody').html(tbody);
+
     }
 
     function modalBeneficiosFechar() {
-        $("#formBeneficiario")[0].reset();     
+        $("#formBeneficiario")[0].reset();
+        $("#bodyBeneficiarios").empty();
     }
-    
+
 
 </script>

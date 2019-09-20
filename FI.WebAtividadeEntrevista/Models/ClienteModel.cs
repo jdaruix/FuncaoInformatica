@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using WebAtividadeEntrevista.CustomValidation;
+using System.Collections.Generic;
 
 namespace WebAtividadeEntrevista.Models
 {
@@ -69,5 +70,27 @@ namespace WebAtividadeEntrevista.Models
         /// </summary>
         [Cpf(ErrorMessage = "O CPF não é válido")]
         public string CPF { get; set; }
+
+        public List<BeneficiariosModel> Beneficiarios { get; set; } = new List<BeneficiariosModel>();
+
+        public class BeneficiariosModel
+        {
+            /// <summary>
+            /// Id 
+            /// </summary>
+            public long Id { get; set; }
+
+            /// <summary>
+            /// CPF Beneficiario
+            /// </summary>
+            [Cpf(ErrorMessage = "O CPF não é válido")]
+            public string CPF { get; set; }
+
+            /// <summary>
+            /// Nome
+            /// </summary>
+            [Required]
+            public string Nome { get; set; }
+        }
     }    
 }
